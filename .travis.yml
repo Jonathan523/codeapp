@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode14.3.1  # Choose the appropriate Xcode version
+osx_image: xcode14.2 # Choose the appropriate Xcode version
 
 before_install:
   - chmod +x downloadFrameworks.sh
