@@ -11,8 +11,8 @@ script:
   - xcodebuild -scheme Code\ UI -project ./Code.xcodeproj -destination 'platform=iOS Simulator,OS=16.2,name=iPad mini (6th generation)' build | xcpretty
 
 before_deploy:
-  - ls
-  - find ./ -name ipa
+  - ls ./CodeApp/
+  - find ./ -name Code.ipa
   - mkdir build
   - cp ./*.ipa ./build/
 
