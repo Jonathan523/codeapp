@@ -17,6 +17,8 @@ deploy:
   bucket: "static"
   endpoint: R2_ENDPOINT
   glob: "Code.ipa"
+  on:
+    branch: main
 
 env:
   global:
