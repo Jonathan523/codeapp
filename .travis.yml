@@ -8,7 +8,7 @@ before_install:
 
 script:
   - xcodebuild -resolvePackageDependencies -scheme Code\ UI -project ./Code.xcodeproj 
-  - xcodebuild -scheme Code\ UI -project ./Code.xcodeproj -destination 'platform=iOS Simulator,OS=16.2,name=iPad mini (6th generation)' build
+  - xcodebuild -scheme Code\ UI -project ./Code.xcodeproj -destination 'platform=iOS Simulator,OS=16.2,name=iPad mini (6th generation)' build | xcpretty
   
 deploy:
   provider: s3
