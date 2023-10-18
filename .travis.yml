@@ -2,8 +2,8 @@ language: objective-c
 osx_image: xcode14.3.1  # Choose the appropriate Xcode version
 
 before_install:
-  - chmod +x codeapp/downloadFrameworks.sh
-  - ./codeapp/downloadFrameworks.sh
+  - chmod +x downloadFrameworks.sh
+  - ./downloadFrameworks.sh
 
 script:
   - xcodebuild -project codeapp/Code.xcodeproj -scheme CodeUI -destination 'platform:iOS Simulator, id:C3E3221E-F480-460D-BD7B-285E62DB3F2B, OS:16.2, name:iPad mini (6th generation)' build
