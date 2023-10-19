@@ -7,14 +7,10 @@ before_install:
   - ./downloadFrameworks.sh
 
 script:
-  - xcodebuild -resolvePackageDependencies -scheme Code\ UI -project ./Code.xcodeproj 
-  - xcodebuild -scheme Code\ UI -project ./Code.xcodeproj -destination 'platform=iOS Simulator,OS=16.2,name=iPad mini (6th generation)' build | xcpretty
+  - fastlane build_unsigned_ipa
 
 before_deploy:
-  - ls ./CodeApp/
   - find ./ -name Code.ipa
-  - mkdir build
-  - cp ./*.ipa ./build/
 
 deploy:
   secret_access_key:
@@ -25,6 +21,6 @@ deploy:
     secure: plJDDvc/2rajZOi/MuTM9MJvQ9mK09CuQVhJUXUKFvXMrkcwAFVRxVDAxRSLyOoBzPJgjSyU/+5Hy5AY5JQwAhLYorwtPPB92RtlPcXqlgFc3SXqLY6Xt0DOY7N48U7WoIS/NQVwe/kMy78VIvNv5FQw+cr/v56l8hytZufS8cb6+i2USsXdYA0FwIX4iPwzPvRFOLugSZyoIxwSZ2YLgUDXMQqo8AEdubmWawSGBa4hbT6OOmZs4DAD6Qqhg15r7z2zcbiVN7OMOHGcBeW/3GnCUH/rIf2kndWghiNLrl53uSgXYu4hErDAqcJgwmhSoV6iGXUDYpocq3QpQydHGXSApSn+XsM1n7kRqogqg0zA7Sn59dVZyThIfxdRUzI3haFM0ACDfuDxVIfy6zNERoaH2RRvPcoOBDzDVNqdNxuTt1l1i+uuPgsDCvqgTkVyQ4ij5KSkzaoCM7rQt5YjcjcZNrtPKSy53ossRH2b73yofT0JlNUmbWK1TtnWjbivBBoPQyYOlAkpJmiHn2IQh+e/siIe0G7p6IH3jKbJe5Hn2WKt79SZ1EQkioao/MMsTipyn3sryFWBfbsarfVQF6F25q1ANxGYbq1d88pE96Azy/GielSMHdRdyE9F1K0Z6XyszvsPCW7/SjF3WcLqL+wXLPUOycV342qXNyYCHAI=
   provider: s3
   bucket: "static"
-  local_dir: build
+  local_dir: fastlane/output
   on:
     branch: main
